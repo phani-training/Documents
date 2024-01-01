@@ -2,11 +2,14 @@
 ## Install the webrtc as per the document mentioned in https://learn.microsoft.com/en-us/winrtc/getting-started
 
 ## Follow the steps in a separate folder:
+```
 - cmake -S . -B build -G "Visual Studio 17 2022" -A x64 -DLWS_OPENSSL_LIBRARIES="C:/Program Files/OpenSSL-Win64/lib/libssl.lib;C:/Program Files/OpenSSL-Win64/lib/libcrypto.lib" -DLWS_OPENSSL_INCLUDE_DIRS="C:/Program Files/OpenSSL-Win64/include"
 - Use this for createing OPEN SSL Libraries
-
+```
 ---For Boring SSL----------
+```
 - cmake -S . -B build -G "Visual Studio 16 2019" -A x64 -DLWS_OPENSSL_LIBRARIES="C:/webrtc/src/out/msvc/win/Release/x64/obj/third_party/boringssl/boringssl.lib" -DLWS_OPENSSL_INCLUDE_DIRS="C:\webrtc\src\third_party\boringssl\src\include"
+```
 - It was investigated that libwebrtc uses Boring SSL instead of Open SSL. So had to use this command to generate the BoringSSL libraries. BoringSSL in also the part of the libwebrtc library, so we can use the folders accordingly.
 - 
 ## Steps for building Signalling Client App:
