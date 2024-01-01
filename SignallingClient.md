@@ -1,5 +1,7 @@
 # Signalling Client installation
+## Install the webrtc as per the document mentioned in https://learn.microsoft.com/en-us/winrtc/getting-started
 
+## Follow the steps in a separate folder:
 - cmake -S . -B build -G "Visual Studio 17 2022" -A x64 -DLWS_OPENSSL_LIBRARIES="C:/Program Files/OpenSSL-Win64/lib/libssl.lib;C:/Program Files/OpenSSL-Win64/lib/libcrypto.lib" -DLWS_OPENSSL_INCLUDE_DIRS="C:/Program Files/OpenSSL-Win64/include"
 - Use this for createing OPEN SSL Libraries
 
