@@ -11,8 +11,15 @@ cmake -S . -B build -G "Visual Studio 17 2022" -A x64 -DLWS_OPENSSL_LIBRARIES="C
 cmake -S . -B build -G "Visual Studio 16 2019" -A x64 -DLWS_OPENSSL_LIBRARIES="C:/webrtc/src/out/msvc/win/Release/x64/obj/third_party/boringssl/boringssl.lib" -DLWS_OPENSSL_INCLUDE_DIRS="C:\webrtc\src\third_party\boringssl\src\include"
 ```
 - It was investigated that libwebrtc uses Boring SSL instead of Open SSL. So had to use this command to generate the BoringSSL libraries. BoringSSL is also part of the libwebrtc library, so we can use the folders accordingly.
-- 
+
 ## Steps for building Signalling Client App:
+1. Create a new folder called Chime
+2. Clone the SignallingSDK Demo from the git repo
+3. Run the CMake Command from the C:\Chime\amazon-chime-sdk-cpp\chime-sdk-signaling-cpp folder to generate the projects and files for the Signalling Client SDK. Remember that the CMakeList file is in this folder only.
+4. Make sure all the projects of the Solution should be in Release x64 mode
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
 - Install Open SSL 1.1.0: https://slproweb.com/download/Win64OpenSSL-1_1_1w.msi in Following Location C:\Program Files\OpenSSL-Win64.
 - Run the Following Command in the Project Directory where you have cloned Signalling SDK and contains the CMake file.
 - Open the solution from Visual Studio and resolve the warning as errors in the web-sockets projects.
