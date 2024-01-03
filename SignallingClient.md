@@ -34,7 +34,7 @@ cmake -S . -B build -G "Visual Studio 16 2019" -A x64 -DLWS_OPENSSL_LIBRARIES="C
 
 --------------------------------------------------------------------------------------------------------------------------------------- 
 ### Additional Include Directories copied from the chime-sdk-lib :
-C:\Users\abhim\Downloads\chime-sdk-signaling-cpp\src;C:\Users\abhim\Downloads\chime-sdk-signaling-cpp\build\_deps\libwebsockets-src\lib\..\include;C:\Users\abhim\Downloads\chime-sdk-signaling-cpp\build\_deps\libwebsockets-build\lib\..\include;C:\Program Files\OpenSSL-Win64\include;C:\Users\abhim\Downloads\chime-sdk-signaling-cpp\build\_deps\protobuf-src\src;%(AdditionalIncludeDirectories)
+C:\Chime\amazon-chime-sdk-cpp\chime-sdk-signaling-cpp\src;C:\Chime\amazon-chime-sdk-cpp\chime-sdk-signaling-cpp\build\_deps\libwebsockets-src\lib\..\include;C:\Chime\amazon-chime-sdk-cpp\chime-sdk-signaling-cpp\build\_deps\libwebsockets-build\lib\..\include;C:\webrtc\src\third_party\boringssl\src\include;C:\Chime\amazon-chime-sdk-cpp\chime-sdk-signaling-cpp\build\_deps\protobuf-src\src;%(AdditionalIncludeDirectories)
 
 ### Additional Dependencies (From Unit Test Project)
 ..\Release\amazon-chime-signaling-sdk-cpp-lib.lib;..\lib\Release\gtest.lib;..\lib\Release\gmock.lib;..\_deps\protobuf-build\Release\libprotobuf.lib;..\_deps\libwebsockets-build\lib\Release\websockets_static.lib;C:\Program Files\OpenSSL-Win64\lib\libssl.lib;C:\Program Files\OpenSSL-Win64\lib\libcrypto.lib;ws2_32.lib;userenv.lib;psapi.lib;iphlpapi.lib;crypt32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib
