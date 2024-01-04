@@ -1,7 +1,0 @@
-﻿  SignallingClientPoc.cpp
-c:\webrtc\src\third_party\abseil-cpp\absl\meta\type_traits.h(620,35): error C2039: 'result_of': is not a member of 'std'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\sstream(20): message : see declaration of 'std'
-c:\webrtc\src\third_party\abseil-cpp\absl\meta\type_traits.h(620,47): error C2653: 'result_of': is not a class or namespace name
-c:\webrtc\src\third_party\abseil-cpp\absl\meta\type_traits.h(620,49): error C2061: syntax error: identifier 'type'
-c:\webrtc\src\third_party\abseil-cpp\absl\meta\type_traits.h(622,32): error C2143: syntax error: missing ';' before '{'
-c:\webrtc\src\third_party\abseil-cpp\absl\meta\type_traits.h(622,32): error C2447: '{': missing function header (old-style formal list?)
