@@ -30,7 +30,11 @@ cmake -S . -B build -G "Visual Studio 16 2019" -A x64 -DLWS_OPENSSL_LIBRARIES="C
 9. For the Rest API, use the C++ 20 features. Add the pre-processor directives  for C++20 warnings.
 10. Add the include folders as per the directories of chime-SDK-lib
 11. Add the include libs as per the libs available in the Unit-test.
-12. Build and Test the Application.  
+12. Build and Test the Application.
+
+#### NOTE:
+- As Signalling client Samples are using the folder structure called webrtc, our webrtc that we have generated uses the src folder. It is hard to replace all the src with webrtc or vice versa.
+- Tempororily I have created a copy of src into another folder called as webrtc. So please create this folder and add the contents of the src into it. 
 
 --------------------------------------------------------------------------------------------------------------------------------------- 
 ### Additional Include Directories copied from the chime-sdk-lib :
