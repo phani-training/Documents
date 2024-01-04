@@ -140,7 +140,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>boringssl.lib;boringssl_asm.lib;C:\Program Files\OpenSSL-Win64\lib\openssl.lib;C:\Program Files\OpenSSL-Win64\lib\libcrypto.lib;$(SolutionDir)Release\amazon-chime-signaling-sdk-cpp-lib.lib;$(SolutionDir)lib\Release\gtest.lib;$(SolutionDir)lib\Release\gmock.lib;$(SolutionDir)_deps\protobuf-build\Release\libprotobuf.lib;$(SolutionDir)_deps\libwebsockets-build\lib\Release\websockets_static.lib;ws2_32.lib;userenv.lib;psapi.lib;iphlpapi.lib;crypt32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;webrtc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>boringssl.lib;boringssl_asm.lib;C:\Program Files\OpenSSL-Win64\lib\openssl.lib;C:\Program Files\OpenSSL-Win64\lib\libcrypto.lib;$(SolutionDir)Release\amazon-chime-signaling-sdk-cpp-lib.lib;$(SolutionDir)lib\Release\gtest.lib;$(SolutionDir)lib\Release\gmock.lib;$(SolutionDir)_deps\protobuf-build\Release\libprotobuf.lib;$(SolutionDir)_deps\libwebsockets-build\lib\Release\websockets_static.lib;ws2_32.lib;userenv.lib;psapi.lib;iphlpapi.lib;crypt32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;webrtc.lib;winmm.lib;Secur32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\webrtc\src\out\msvc\win\Release\x64\obj;C:\webrtc\src\out\msvc\win\Release\x64\obj\third_party\boringssl;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
