@@ -1,5 +1,6 @@
 # Signalling Client installation
 ## Install the webrtc as per the document mentioned in https://learn.microsoft.com/en-us/winrtc/getting-started
+- Follow the steps till Consuming libraries.
 
 ## Follow the steps in a separate folder:
 ```
