@@ -54,6 +54,9 @@
     <ClCompile Include="..\demo\shared\video\write_to_file_yuv_video_sink.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\webrtc\src\modules\audio_device\dummy\file_audio_device_factory.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MeetingInfo.h">

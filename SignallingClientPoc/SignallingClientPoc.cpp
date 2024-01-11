@@ -33,8 +33,7 @@ MeetingSessionConfiguration createMeetingConfiguration() {
   try {
     MeetingSessionCredentials credentials{details.attendee_id, details.external_user_id, details.join_token};
     MeetingSessionURLs urls{details.audio_host_url, details.signaling_url};
-    MeetingSessionConfiguration configuration{details.meeting_id, details.external_meeting_id, std::move(credentials),
-                                              std::move(urls)};
+    MeetingSessionConfiguration configuration{details.meeting_id, details.external_meeting_id, std::move(credentials),std::move(urls)};
 
     return configuration;
   } catch (std::exception& e) {
@@ -53,21 +52,20 @@ void print(std::string msg) { std::cout << msg << std::endl; }
 int main() {
   SignalingClientConfiguration signaling_client_config;
   auto meeting_session_config = createMeetingConfiguration();
-  print("Attendee Id: " + meeting_session_config.credentials.attendee_id);
 
+  signaling_client_config.meeting_configuration = meeting_session_config;  
+  CHIME_LOG(LogLevel::kInfo, "Attendee ID: " + meeting_session_config.credentials.attendee_id);
   DefaultSignalingDependencies signaling_dependencies{};
+  
   auto signaling_client =
       DefaultSignalingClientFactory::CreateSignalingClient(signaling_client_config, std::move(signaling_dependencies));
-
   MeetingControllerConfiguration configuration;
   configuration.meeting_configuration = meeting_session_config;
-  //configuration.input_audio_filename = "samplefile.pcm";
-  configuration.log_level = "Info";
+  configuration.input_audio_filename = "C:/Chime/amazon-chime-sdk-cpp/chime-sdk-signaling-cpp/demo/cli/media_in/SampleFile_48k_16bit.pcm";
 
-  //*******************************Adding the Meeting Controller to the Application************************************
+  //****************************Adding the Meeting Controller to the Application*********************************
   auto session_description_observer = std::make_unique<SessionDescriptionObserver>();
-  std::shared_ptr<MeetingController> controller =
-      MeetingController::Create(configuration, std::move(signaling_client), session_description_observer.get());
+  std::shared_ptr<MeetingController> controller = MeetingController::Create(configuration, std::move(signaling_client), session_description_observer.get());
 
   session_description_observer->controller_ = controller.get();
   auto peer_connection_observer = std::make_unique<PeerConnectionObserver>(controller.get());
@@ -81,13 +79,22 @@ int main() {
       std::make_unique<VideoEventsObserver>(controller.get(), session_description_observer.get());
   controller->signaling_client_->AddSignalingClientObserver(video_events_observer.get());
   
-  //auto lifecycle_observer = std::make_unique<LifecycleObserver>(controller.get(), peer_connection_observer.get(), /video_events_observer.get(), session_description_observer.get());
-  //controller->signaling_client_->AddSignalingClientObserver(lifecycle_observer.get());
+  auto lifecycle_observer = std::make_unique<LifecycleObserver>(controller.get(), peer_connection_observer.get(), video_events_observer.get(), session_description_observer.get());
+  controller->signaling_client_->AddSignalingClientObserver(lifecycle_observer.get());
 
-  //auto presence_events_observer = std::make_unique<PresenceEventsObserver>();
-  //controller->signaling_client_->AddSignalingClientObserver(presence_events_observer.get());
+  auto presence_events_observer = std::make_unique<PresenceEventsObserver>();
+  controller->signaling_client_->AddSignalingClientObserver(presence_events_observer.get());
 
   controller->Start();
+  
+  //while (true) {
+  //  DataMessageToSend msg;
+  //  msg.data = "Test Message";
+  //  msg.topic = "BasicDemo";
+  //  print(msg.DebugString());
+  //  controller->signaling_client_->SendDataMessage(msg);
+  //  Sleep(5000);
+  //}
 
   auto keypressController = std::make_unique<KeypressController>(controller);
   return keypressController->Exec();
