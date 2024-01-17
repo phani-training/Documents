@@ -6,17 +6,15 @@
 • At least 15GB of disk space.
 • SSD drive formatted with NTFS.
 #### External applications
-• Microsoft Visual Studio 2019 16.6.2.
-• Command Prompt (Windows Terminal is recommended, but cmd.exe works as well).
-
+- Microsoft Visual Studio 2019 16.6.2.
+- Git Download.
+- Command Prompt (Windows Terminal is recommended, but cmd.exe works as well).
 - In the Visual Studio Installer app, please verify if Visual Studio 2019 has Desktop development with C++ and Universal Windows Platform development workloads installed. Switch to the Individual Components tab. Make sure C++ MFC for latest v142 build tools (x86 & x64) and C++ ATL for the latest v142 build tools (x86 & x64) are selected.
 - If you want to build for ARM/ARM64, also select the C++ MFC and ATL for latest v142 build tools and C++ Universal Windows Platform support for v142 build tools for the corresponding architecture.
 - When installed by Visual Studio, the Windows SDK doesn't have the SDK Debugging Tools installed. Please go to Control Panel → Programs → Programs and Features → Select the most recent Windows Software Development Kit → Change → Change → Select Debugging Tools For Windows → Change.
 - Opening the developer command prompt
     - You'll need a command prompt configured for calling Visual Studio tools. The following are two options for opening a developer command prompt:
-    - Using the shortcut in the start menu : Click on Start Menu → Visual Studio 2019 → x64 Native Tools Command Prompt for VS 2019
-or
-
+    - Using the shortcut in the start menu : Click on Start Menu → Visual Studio 2019 → x64 Native Tools Command Prompt for VS 2019.
 ### Acquiring WebRTC code base
 #### Getting depot_tools
 - WebRTC uses Chromium's build tools named depot_tools. You can download it with curl that is now shipped with Windows. The following command will download depot_tool.zip to the current folder.
