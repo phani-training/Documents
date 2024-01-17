@@ -66,6 +66,13 @@ Request the tools to fetch the WebRTC code base. The following command will take
 fetch --nohooks webrtc
 ```
 
+
+
+### Applying the patches
+Clone the winrtc repo into C Drive. 
+```
+git clone https://github.com/microsoft/winrtc.git
+```
 Change to the branch-heads/4147 branch. This is the commit that the UWP/WIN patches (see below) are based on.
 ```
 cd src
@@ -74,12 +81,6 @@ git checkout branch-heads/4147
 Instruct the tools to bring the bits from all the sub repositories to your dev box. This may take a while.
 ```
 gclient sync -D -r branch-heads/4147
-```
-
-### Applying the patches
-Clone the winrtc repo into C Drive. 
-```
-git clone https://github.com/microsoft/winrtc.git
 ```
 The patchWebRTCM84.cmd batch file needs to locate the WebRTC code base to be patched. The environment variable WEBRTCM84_ROOT should contain the path for the WebRTC code base you've just downloaded.
 ```
