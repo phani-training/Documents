@@ -75,7 +75,10 @@ gclient sync -D -r branch-heads/4147
 ```
 
 ### Applying the patches
-Clone the Application from https://github.com/microsoft/winrtc.git into C Drive. 
+Clone the winrtc repo into C Drive. 
+```
+git clone https://github.com/microsoft/winrtc.git
+```
 The patchWebRTCM84.cmd batch file needs to locate the WebRTC code base to be patched. The environment variable WEBRTCM84_ROOT should contain the path for the WebRTC code base you've just downloaded.
 ```
 set WEBRTCM84_ROOT=c:\webrtc\src
