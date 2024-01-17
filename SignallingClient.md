@@ -42,6 +42,11 @@ cmake -S . -B build -G "Visual Studio 16 2019" -A x64 -DLWS_OPENSSL_LIBRARIES="C
 - Tempororily I have created a copy of src into another folder called as webrtc. So please create this folder and add the contents of the src into it. 
 
 
+### List of Preprocessor directives
+
+USE_AURA=1;_HAS_EXCEPTIONS=0;__STD_C;_CRT_RAND_S;_CRT_SECURE_NO_DEPRECATE;_ATL_NO_OPENGL;_WINDOWS;CERT_CHAIN_PARA_HAS_EXTRA_FIELDS;PSAPI_VERSION=2;WIN32;_SECURE_ATL;WINUWP;
+__WRL_NO_DEFAULT_LIB__;WINAPI_FAMILY=WINAPI_FAMILY_PC_APP;WIN10=_WIN32_WINNT_WIN10;WIN32_LEAN_AND_MEAN;NOMINMAX;_UNICODE;UNICODE;NTDDI_VERSION=NTDDI_WIN10_RS2;_WIN32_WINNT=0x0A00;WINVER=0x0A00;NDEBUG;NVALGRIND;DYNAMIC_ANNOTATIONS_ENABLED=0;WEBRTC_ENABLE_PROTOBUF=0;WEBRTC_INCLUDE_INTERNAL_AUDIO_DEVICE;RTC_ENABLE_VP9;HAVE_SCTP;WEBRTC_LIBRARY_IMPL;WEBRTC_NON_STATIC_TRACE_EVENT_HANDLERS=0;WEBRTC_WIN;ABSL_ALLOCATOR_NOTHROW=1;WEBRTC_VIDEO_CAPTURE_WINRT;WEBRTC_DUMMY_FILE_DEVICES;_CONSOLE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;_SILENCE_ALL_CXX20_DEPRECATION_WARNINGS;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;%(PreprocessorDefinitions)
+
 --------------------------------------------------------------------------------------------------------------------------------------- 
 ### Additional Include Directories copied from the chime-sdk-lib :
 C:\Chime\amazon-chime-sdk-cpp\chime-sdk-signaling-cpp\src;C:\Chime\amazon-chime-sdk-cpp\chime-sdk-signaling-cpp\build\_deps\libwebsockets-src\lib\..\include;C:\Chime\amazon-chime-sdk-cpp\chime-sdk-signaling-cpp\build\_deps\libwebsockets-build\lib\..\include;C:\webrtc\src\third_party\boringssl\src\include;C:\Chime\amazon-chime-sdk-cpp\chime-sdk-signaling-cpp\build\_deps\protobuf-src\src;%(AdditionalIncludeDirectories)
