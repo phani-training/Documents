@@ -15,6 +15,8 @@
 - Opening the developer command prompt
     - You'll need a command prompt configured for calling Visual Studio tools. The following are two options for opening a developer command prompt:
     - Using the shortcut in the start menu : Click on Start Menu → Visual Studio 2019 → x64 Native Tools Command Prompt for VS 2019.
+    - Run it as Administrator.
+    - Move to the C: Drive. 
 ### Acquiring WebRTC code base
 #### Getting depot_tools
 - WebRTC uses Chromium's build tools named depot_tools. You can download it with curl that is now shipped with Windows. The following command will download depot_tool.zip to the current folder.
