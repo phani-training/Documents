@@ -66,7 +66,7 @@ Request the tools to fetch the WebRTC code base. The following command will take
 fetch --nohooks webrtc
 ```
 
-Change to the branch-heads/4147 branch. This is the commit that the UWP patches (see below) are based on.
+Change to the branch-heads/4147 branch. This is the commit that the UWP/WIN patches (see below) are based on.
 ```
 cd src
 git checkout branch-heads/4147
