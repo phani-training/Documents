@@ -11,7 +11,7 @@ cmake -S . -B build -G "Visual Studio 16 2019" -A x64 -DLWS_OPENSSL_LIBRARIES="C
 ```
 - It was investigated that libwebrtc uses Boring SSL instead of Open SSL. So had to use this command to generate the BoringSSL libraries. BoringSSL is also part of the libwebrtc library, so we can use the folders accordingly.
 
-5. Open the Solution from the build directory that is generated after this command is executed. 
+5. Open the Solution from the build directory that is generated after this command is executed.
 6. Make sure all the projects of the Solution should be in Release x64 mode
 7. Open base.h file in  C:\webrtc\src\third_party\boringssl\src\include\openssl and add the Following Lines of Code in the Top of the File:
 ```
@@ -20,14 +20,14 @@ cmake -S . -B build -G "Visual Studio 16 2019" -A x64 -DLWS_OPENSSL_LIBRARIES="C
 #undef X509_EXTENSIONS
 #endif
 ```
-6. Make all the project Code Generations as MT. Build the Solution for success.
-7. Create a new project inside the same Solution of the type: Console App.
-8. Implement the code as available in the Signalling-ClientPOC's  SignallingClientPoc.cpp
-9.  U can clone the project that is available in this documents repository.
-10. For the Rest API, use the C++ 20 features. Add the pre-processor directives  for C++20 warnings.
-11. Add the include folders as per the directories of chime-SDK-lib
-12. Add the include libs as per the libs available in the Unit-test.
-13. Build and Test the Application.
+8. Make all the project Code Generations as MT. Build the Solution for success.
+9. Create a new project inside the same Solution of the type: Console App.
+10. Implement the code as available in the Signalling-ClientPOC's  SignallingClientPoc.cpp
+11.  U can clone the project that is available in this documents repository.
+12. For the Rest API, use the C++ 20 features. Add the pre-processor directives  for C++20 warnings.
+13. Add the include folders as per the directories of chime-SDK-lib
+14. Add the include libs as per the libs available in the Unit-test.
+15. Build and Test the Application.
 
 #### NOTE:
 - As Signalling client Samples are using the folder structure called webrtc, our webrtc that we have generated uses the src folder. It is hard to replace all the src with webrtc or vice versa.
