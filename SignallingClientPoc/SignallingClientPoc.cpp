@@ -4,6 +4,7 @@
 #include <Windows.h>
 #include <iostream>
 #include "RestApi.h"
+#include"HelperFunctions.h"
 #include "signaling/signaling_client.h"
 #include "signaling/signaling_client_configuration.h"
 #include "signaling/default_signaling_client_factory.h"
@@ -26,15 +27,14 @@ using namespace chime;
 /// </summary>
 /// <returns>A Meeting Session Configuration object</returns>
 MeetingSessionConfiguration createMeetingConfiguration() {
-  Uri request{L"https://pulud6u8je.execute-api.us-east-1.amazonaws.com/Prod/create?m=123"};
+  Uri request{L"https://pulud6u8je.execute-api.us-east-1.amazonaws.com/Prod/create?m=899901"};
+//Uri request{L"https://pulud6u8je.execute-api.us-east-1.amazonaws.com/Prod/join?m=899901"};
 
   MeetingDetails details = GetMeetingDetails(request);
-
   try {
     MeetingSessionCredentials credentials{details.attendee_id, details.external_user_id, details.join_token};
     MeetingSessionURLs urls{details.audio_host_url, details.signaling_url};
     MeetingSessionConfiguration configuration{details.meeting_id, details.external_meeting_id, std::move(credentials),std::move(urls)};
-
     return configuration;
   } catch (std::exception& e) {
     std::cout << e.what() << std::endl;
@@ -43,17 +43,10 @@ MeetingSessionConfiguration createMeetingConfiguration() {
   return c;
 }
 
-/// <summary>
-/// Helper Function to print on the Console
-/// </summary>
-/// <param name="msg">String Message to Print</param>
-void print(std::string msg) { std::cout << msg << std::endl; }
-
 int main() {
- 
     SignalingClientConfiguration signaling_client_config;
     auto meeting_session_config = createMeetingConfiguration();
-
+    CHIME_LOG(LogLevel::kInfo, "Meeting id: " + meeting_session_config.meeting_id);
     signaling_client_config.meeting_configuration = meeting_session_config;
     CHIME_LOG(LogLevel::kInfo, "Attendee ID: " + meeting_session_config.credentials.attendee_id);
     DefaultSignalingDependencies signaling_dependencies{};
@@ -72,6 +65,7 @@ int main() {
 
     session_description_observer->controller_ = controller.get();
     auto peer_connection_observer = std::make_unique<PeerConnectionObserver>(controller.get());
+    
     auto audio_events_observer = std::make_unique<AudioEventsObserver>();
     controller->signaling_client_->AddSignalingClientObserver(audio_events_observer.get());
 
@@ -81,28 +75,28 @@ int main() {
     auto video_events_observer =
         std::make_unique<VideoEventsObserver>(controller.get(), session_description_observer.get());
     controller->signaling_client_->AddSignalingClientObserver(video_events_observer.get());
-
     ////////////////////////Issue with the LifeCycleObserver////////////////////////////////////////////////////////
     /*auto lifecycle_observer =
         std::make_unique<LifecycleObserver>(controller.get(), peer_connection_observer.get(),
                                             video_events_observer.get(), session_description_observer.get());
     controller->signaling_client_->AddSignalingClientObserver(lifecycle_observer.get());*/
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
     auto presence_events_observer = std::make_unique<PresenceEventsObserver>();
     controller->signaling_client_->AddSignalingClientObserver(presence_events_observer.get());
-
     controller->Start();
-
+    
     while (true) {
       DataMessageToSend msg;
-      msg.data = "Test Message";
+      msg.data = "Test Message sent at " + getTime();
       msg.topic = "BasicDemo";
       msg.lifetime_ms = 5000;
-      print(msg.DebugString());
       controller->signaling_client_->SendDataMessage(msg);
       Sleep(5000);
     }
-  //auto keypressController = std::make_unique<KeypressController>(controller);
-  //return keypressController->Exec();
+
+   /* LocalVideoConfiguration lVc;
+    lVc.max_bitrate_kbps = 1000;
+    controller->signaling_client_->AddLocalVideo("abc", lVc);
+  auto keypressController = std::make_unique<KeypressController>(controller);
+  return keypressController->Exec();*/
 }
