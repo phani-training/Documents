@@ -57,8 +57,9 @@ cd c:\webrtc
 ```
 
 Downloading the bits
-Tell to the gclient tool to initialize your local copy of the repos.
+Tell to the gclient tool to initialize your local copy of the repos. If you have already created the Depot tools setup in the previous instance of the Native Tools terminal, then U should run an additional command before U run gclient
 ```
+git config --global --add safe.directory C:/depot_tools
 gclient
 ```
 Request the tools to fetch the WebRTC code base. The following command will take time. Past experience shows that it might take around 1 hour and 10 minutes.
