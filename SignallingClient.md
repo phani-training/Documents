@@ -1,14 +1,18 @@
-
+# STEPS FOR BUILDING SIGNALING CLIENT APP
+### NOTE: 
+Please install the webrtc as per the instructions provided in the webrtc.md before continuing here. 
 ## Steps for building Signalling Client App:
 1. Install the OpenSSL for Windows Win64OpenSSL-1_1_1w.msi available in https://slproweb.com/products/Win32OpenSSL.html. Download the 1.1.1 version. 
-2. Open the x64 Native Tools Command Prompt for VS 2019 and run the installation using this Console.
+2. Open the x64 Native Tools Command Prompt for VS 2019 and run the following steps in an order.
 3. Create a new folder called Chime in the C Drive as:
 ```
 mkdir Chime
 cd Chime
 ```
 4. Clone the SignallingSDK Demo from the git repo: https://github.com/aws/amazon-chime-sdk-cpp.git inside the Chime folder. 
-  
+```
+git clone https://github.com/aws/amazon-chime-sdk-cpp.git
+```  
 ### Installing Signaling Client Project that uses BoringSSL
 1. Move to the directory generated at C:\Chime\amazon-chime-sdk-cpp\chime-sdk-signaling-cpp
 2. Run the CMake Command to generate the projects and files for the Signaling Client SDK. Remember that the CMakeList file is in this folder.
@@ -17,15 +21,15 @@ cmake -S . -B build -G "Visual Studio 16 2019" -A x64 -DLWS_OPENSSL_LIBRARIES="C
 ```
 	- It was investigated that libwebrtc uses Boring SSL instead of Open SSL. So had to use this command to generate the Signaling Client Application that consumes BoringSSL libraries. BoringSSL is also part of the libwebrtc library, so we can use the folders accordingly.
 
-3. Open the Solution from the build directory that is generated after this command is executed. 
+3. Open the Solution in Visual Studio from the build directory available at Chime\amazon-chime-sdk-cpp\chime-sdk-signaling-cpp\build\AmazonChimeSignalingSdkCpp.sln that is generated after this command is executed. 
 4. Make sure all the projects of the Solution should be in Release x64 mode.
 5. Make all the project Code Generations as MT at Project Properties->C/C++->Code Generation->RunTime Library. Build the Solution for success.
 6. Except for the unit_test, rest of the projects should build for success, if required, U can exclude the Unit_test project from the Solution.
-8. Include the SignalingClientPOC project available in the current branch into the current Solution.
-9. U can remove OpenSSL.lib from the Project
+7. Resolve any errors in the Solution based on the Code modifications mentioned below at <b>Major code Modifications</b> section.
+8. Include the SignalingClientPOC project available in the current branch into the current Solution. Let this project be in the same folder where the build is available at Chime\amazon-chime-sdk-cpp\chime-sdk-signaling-cpp. 
+9. If there is an inclusion of OpenSSL.lib in the Project, U can remove it from the Project's Properties. It is found in Project Properties->Linker->Additional Dependencies. 
 ![image](https://github.com/imentor-ltts/chime/assets/79626160/2b5f6603-5ea1-4bdd-bbaa-22f769b67768)
-
-11. Build and Test the Application. If errors, make the Code modifications accordingly.
+10. Build and Test the Application. If errors, make the Code modifications accordingly.
 
 ### Major code Modifications:
 1. Open base.h file in  C:\webrtc\src\third_party\boringssl\src\include\openssl and add the Following Lines of Code in the Top of the File and save:
@@ -73,7 +77,7 @@ Also provide default constructor to C:\Chime\amazon-chime-sdk-cpp\chime-sdk-sign
    local_video_transceiver_->Stop();
    ```
 Like wise, U may have to change the StopDirection method call to Stop method in the C:\Chime\amazon-chime-sdk-cpp\chime-sdk-signaling-cpp\demo\shared\observers\peer_connection_observer.cc file also. 
-6. In the same file, U should modify the code block of Lineno 199 that is found in the StartLocalVideo Function to the below code. 
+6. In the same file, U should modify the code block of Line no 199 that is found in the StartLocalVideo Function to the below code. 
 ```
   if (IsValidTransceiver(local_video_transceiver_)) {
     RTC_LOG(LS_INFO) << "Setting local_video_transceiver direction to send";
@@ -109,8 +113,3 @@ virtual void OnRenegotiationNeeded() {}
 - As Signalling client Samples are using the folder structure called webrtc, but our webrtc that we have generated uses the folder as src. It is hard to replace all the src with webrtc or vice versa.
 - <b>Tempororily I have created a copy of src in the webrtc directory called as webrtc. So please create this folder and add the contents of the src into it.</b> 
 - This might find a permanent solution later. 
-
-### NOTE:
-Discarding libcmt from the linking
-Still on the Input tab, click on Ignore Specific Default Libraries and add libcmt.
-It should be libcmtd on debug builds.
