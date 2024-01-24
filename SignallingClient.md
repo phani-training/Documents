@@ -97,18 +97,17 @@ Like wise, U may have to change the StopDirection method call to Stop method in 
   }
 ```
 7. Modify the file C:\Chime\amazon-chime-sdk-cpp\chime-sdk-signaling-cpp\demo\shared\observers\lifecycle_observer.cc as follows at line no 48 in the function block void LifecycleObserver::OnSignalingClientStarted(const SignalingClientStartInfo& join_info):
-   ```
-    auto result = controller_->peer_connection_factory_->CreatePeerConnection(config, std::move(dependencies));
- /* if (!result.ok()) {
-    RTC_LOG(LS_ERROR) << "Failed to create peer connection.";
-    return;
-  } else {*/
-    controller_->peer_connection_ = result.get();
-   ```  
+```
+   auto result = controller_->peer_connection_factory_->CreatePeerConnection(config, std::move(dependencies));
+  {
+    controller_->peer_connection_ = result;
+  }
+```  
 8. Add a new method implementation in the C:\Chime\amazon-chime-sdk-cpp\chime-sdk-signaling-cpp\demo\shared\observers\peer_connection_observer.h file to solve the Abstract class issue:
 ```
 virtual void OnRenegotiationNeeded() {}
 ```
+
 ### NOTE:
 - As Signalling client Samples are using the folder structure called webrtc, but our webrtc that we have generated uses the folder as src. It is hard to replace all the src with webrtc or vice versa.
 - <b>Tempororily I have created a copy of src in the webrtc directory called as webrtc. So please create this folder and add the contents of the src into it.</b> 
