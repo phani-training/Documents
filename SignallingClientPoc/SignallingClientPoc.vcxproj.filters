@@ -24,9 +24,6 @@
     <ClCompile Include="..\demo\shared\observers\audio_events_observer.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\demo\shared\observers\data_message_observer.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\demo\shared\observers\lifecycle_observer.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -63,6 +60,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RestApi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArsDataMessageObserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HelperFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="json.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
