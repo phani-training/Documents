@@ -9,12 +9,25 @@
 #include <winrt/Windows.Data.Json.h>
 #include <locale>
 #include <codecvt>
-
 // using WinRT Framework that works from C++20 onwards
 using namespace winrt;
 using namespace Windows::Foundation;
 using namespace Windows::Web::Http;
 using namespace Windows::Data::Json;
+using namespace std;
+
+/// <summary>
+/// Represents an event triggered by the joinee
+/// </summary>
+struct InputEvent {
+ public:
+  string eventId;  // WM_LBUTTONDOWN, WM_RBUTTONDOWN, WM_MOUSEMOVE, WM_SCROLL, WM_KEYUP, WM_KEYDOWN
+  int xPos;
+  int yPos;
+  int keyCode;
+  int Monitor;
+  std::string dataMessage;
+};
 
 /// <summary>
 /// Represents the Meeting details of the Chime meeting
@@ -41,6 +54,7 @@ std::string HStringToStdString(const winrt::hstring& hstr) {
   std::wstring wstr = hstr.c_str();
   return converter.to_bytes(wstr);
 }
+
 
 // We are using C++ 20 libraries so old depreciated APIs of C++17 will give warnings and erros, so avoid it, we are
 // adding a preprocessor directive called _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;
@@ -89,4 +103,15 @@ MeetingDetails GetMeetingDetails(Uri request) {
   } catch (const std::exception& exception) {
     throw;
   }
+}
+
+InputEvent GetEventDetails(std::string jsonData) {
+  auto obj = JsonObject::Parse(to_hstring(jsonData));  
+  InputEvent ev;
+  ev.keyCode = obj.GetNamedNumber(L"keyCode");
+  ev.eventId = HStringToStdString(obj.GetNamedString(L"eventId"));
+  ev.xPos = obj.GetNamedNumber(L"xPos");
+  ev.yPos = obj.GetNamedNumber(L"yPos");
+  ev.Monitor = obj.GetNamedNumber(L"Monitor");
+  return ev;
 }

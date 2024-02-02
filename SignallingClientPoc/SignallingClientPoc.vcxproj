@@ -164,9 +164,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="HelperFunctions.h" />
     <ClInclude Include="InputHandler.h" />
-    <ClInclude Include="json.hpp" />
     <ClInclude Include="MeetingInfo.h" />
-    <ClInclude Include="Messages.h" />
     <ClInclude Include="RestApi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -93,12 +93,9 @@ int main() {
   controller->Start();
 
   while (true) {
-    DataMessageToSend msg;
-     msg.data = "Test Message sent at " + SignallingClientApi::GetTime();
-     msg.topic = "BasicDemo";
-     msg.lifetime_ms = 5000;
-     controller->signaling_client_->SendDataMessage(msg);
-     Sleep(5000);
+     string msg = "Test Message sent at " + SignallingClientApi::GetTime();
+     controller->SendDataMessage(msg);
+     Sleep(1000);
   }
 
   /* LocalVideoConfiguration lVc;
