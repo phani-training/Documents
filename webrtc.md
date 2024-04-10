@@ -8,6 +8,7 @@
 #### External applications
 - Microsoft Visual Studio 2019 16.6.2.
 - Git.
+- Python 2.7 and set the Path System Environment variable to the location of the installation of Python 2.7
 - Command Prompt (Windows Terminal is recommended, but cmd.exe works as well).
 - In the Visual Studio Installer app, please verify if Visual Studio 2019 has Desktop development with C++ and Universal Windows Platform development workloads installed. Switch to the Individual Components tab. Make sure C++ MFC for latest v142 build tools (x86 & x64) and C++ ATL for the latest v142 build tools (x86 & x64) are selected.
 - If you want to build for ARM/ARM64, also select the C++ MFC and ATL for latest v142 build tools and C++ Universal Windows Platform support for v142 build tools for the corresponding architecture.
